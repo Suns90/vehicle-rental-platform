@@ -1,0 +1,39 @@
+const fs = require('fs');
+const path = require('path');
+
+const structure = [
+  '.github/workflows/ci-cd.yml',
+  'app/admin/dashboard/page.tsx',
+  'app/api/auth/login/route.ts',
+  'app/api/vehicles/route.ts',
+  'app/api/vehicles/verify/route.ts',
+  'app/api/bookings/route.ts',
+  'app/api/payments/create-order/route.ts',
+  'app/api/payments/verify/route.ts',
+  'app/api/payments/verify/route.test.ts',
+  'app/api/messages/route.ts',
+  'app/api/reviews/route.ts',
+  'app/layout.tsx',
+  'prisma/schema.prisma',
+  'android-app/app/src/main/java/com/rental/app/data/ApiService.kt',
+  'android-app/app/src/main/AndroidManifest.xml',
+  '.env.example',
+  '.gitignore',
+  'jest.config.ts',
+  'package.json'
+];
+
+console.log('Building project directory structure...');
+
+structure.forEach(filePath => {
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, '// TODO: Implement module logic\n');
+    console.log(`Created: ${filePath}`);
+  }
+});
+
+console.log('\nProject structure created successfully! You are ready to populate your code.');
