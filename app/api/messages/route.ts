@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import Pusher from 'pusher';
-import admin from 'firebase-admin';
+import * as admin from 'firebase-admin';
 
 const prisma = new PrismaClient();
 
